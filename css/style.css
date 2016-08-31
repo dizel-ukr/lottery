@@ -1,0 +1,64 @@
+.wrapper {
+  display: block;
+  width: 400px;
+  margin: 0 auto; }
+
+.winner {
+  width: 100%;
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 10px; }
+  .winner__is {
+    display: inline-block;
+    width: 240px;
+    text-align: center; }
+  .winner__btn {
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 3px;
+    cursor: pointer; }
+    .winner__btn:hover {
+      border-color: #565656;
+      box-shadow: 0 0 2px grey; }
+    .winner__btn:active {
+      background: #c4c4c4; }
+
+.registration {
+  width: 100%;
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 10px; }
+  .registration__row {
+    display: block;
+    text-align: justify; }
+    .registration__row span {
+      display: inline-block;
+      width: 100px; }
+  .registration__btn {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 3px;
+    background: #ffffff;
+    margin-top: 10px;
+    cursor: pointer; }
+
+.users {
+  width: calc(100% + 20px);
+  border: 1px solid black;
+  margin-bottom: 10px; }
+  .users table {
+    width: 100%;
+    padding: 0;
+    margin: 0; }
+    .users table thead tr {
+      border-bottom: 1px solid black; }
+    .users table td {
+      border-right: 1px solid black; }
+      .users table td:last-child {
+        border: none; }
+    .users table td {
+      width: calc(25% - 10px);
+      padding: 5px; }
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        Lottery</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+
+</head>
+<body>
+<section class="wrapper">
+    <section class="winner">
+        <span class="winner__title">Winners:</span>
+        <span id="js-winner" class="winner__is">...</span>
+        <span id="js-winBtn" class="winner__btn js-winBtn">New winner</span>
+    </section>
+
+    <section class="registration">
+        <form id="js-form" class="registration__form" onsubmit="pressBtn(); return false;">
+            <div class="registration__row">
+                <span>Name:</span>
+                <input type="text" class="registration__input js-name">
+            </div>
+            <div class="registration__row">
+                <span>Surname:</span>
+                <input type="text" class="registration__input js-surname">
+            </div>
+            <div class="registration__row">
+                <span>Email:</span>
+                <input type="text" class="registration__input js-email">
+            </div>
+            <div class="registration__row">
+                <span>Phone:</span>
+                <input type="text" class="registration__input js-phone">
+            </div>
+            <button class="registration__btn" type="submit">Save</button>
+        </form>
+    </section>
+
+    <section class="users">
+        <table id="myList" class="js-list">
+            <thead>
+            <td>
+                Name
+            </td>
+            <td>
+                Surname
+            </td>
+            <td>
+                Email
+            </td>
+            <td>
+                Phone
+            </td>
+            </thead>
+
+        </table>
+    </section>
+</section>
+
+<script>
+
+
+    //
+    var pressBtn = function () {
+        console.log('submit'); //TODO
+        getFields();
+        showUsers();
+    };
+
+    // Get values from form fields
+    var getFields = function () {
+        var name = document.getElementsByClassName('js-name')[0].value,
+                surname = document.getElementsByClassName('js-surname')[0].value,
+                email = document.getElementsByClassName('js-email')[0].value,
+                phone = document.getElementsByClassName('js-phone')[0].value;
+
+        var user = {
+            "name": name,
+            "surname": surname,
+            "email": email,
+            "phone": phone
+        };
+
+        users.push(user);
+        form.reset();
+//        console.log(users);  //TODO
+    };
+
+    // Show users in table
+    var showUsers = function () {
+
+        if (flag == 0) {
+            for (var i = 0; i <= users.length - 1; i++) {
+                console.log('-----------iteration------------');  //TODO
+
+                var row = document.createElement("tr");
+
+                for (z in users[i]) {
+                    console.log(users[i][z]); //TODO
+                    var node = document.createElement("td");
+                    var textnode = document.createTextNode(users[i][z]);
+                    node.appendChild(textnode);
+                    row.appendChild(node);
+                    document.getElementById("myList").appendChild(row);
+                }
+
+            }
+            console.log(flag);
+            flag = 1;
+        } else {
+
+            var row = document.createElement("tr");
+
+            for (z in users[users.length - 1]) {
+                console.log(users[users.length - 1][z]); //TODO
+                var node = document.createElement("td");
+                var textnode = document.createTextNode(users[users.length - 1][z]);
+                node.appendChild(textnode);
+                row.appendChild(node);
+                document.getElementById("myList").appendChild(row);
+            }
+        }
+    };
+
+    //Find a winner
+    var findWinner = function () {
+        winnerField.innerHTML = '';
+        var min = 0,
+                max = users.length - 1;
+
+        function randomInteger() {
+            var rand = min + Math.random() * (max + 1 - min);
+            rand = Math.floor(rand);
+            return rand;
+        }
+
+        var x = randomInteger();
+
+        var winner = users[x].name + " " + users[x].surname;
+        var winNode = document.createTextNode(winner);
+        winnerField.appendChild(winNode);
+
+    };
+
+    var form = document.getElementById('js-form'),
+            list = document.getElementsByClassName('js-list'),
+            winBtn = document.getElementById('js-winBtn'),
+            winnerField = document.getElementById('js-winner'),
+            flag = 0;
+
+
+    winBtn.onclick = function () {
+        findWinner();
+
+    };
+
+    var users = [
+        {
+            "name": "Vasya",
+            "surname": "Pupkin",
+            "email": "test@mail.test",
+            "phone": "+3480661234567"
+        },
+        {
+            "name": "igor",
+            "surname": "Pupkin",
+            "email": "test@mail.test",
+            "phone": "+3480661234567"
+        },
+        {
+            "name": "alesha",
+            "surname": "Pupkin",
+            "email": "test@mail.test",
+            "phone": "+3480661234567"
+        }
+    ];
+    if (users.length > 0) {
+        showUsers()
+    }
+</script>
+</body>
+</html>
